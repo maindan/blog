@@ -13,3 +13,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+class Tag(models.Model):
+    name = models.CharField(max_length=50, null=False)
+
+    def __str__(self):
+        return self.name

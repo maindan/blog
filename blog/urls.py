@@ -4,6 +4,7 @@ from blog import views
 
 router = DefaultRouter()
 router.register('post', views.PostView, basename='post')
+router.register('tag', views.TagView, basename='tag')
 
 urlpatterns = [
     path('', include(router.urls))
