@@ -1,7 +1,8 @@
-venv
+venv/
 *.log
 *.pot
 *.pyc
-__pycache__
+__pycache__/
+*.py[cod]
 db.sqlite3
-media
+media/

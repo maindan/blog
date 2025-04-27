@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     title = models.CharField(max_length=250, null=False)
     subtitle = models.CharField(max_length=300, null=False)
-    content = models.TextField(null=False)
+    content = models.TextField(null=False, max_length=3000)
     tags = models.ManyToManyField('Tag', related_name='posts')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -18,3 +18,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Comment(models.Model):
+    post = models.ForeignKey
+    content = models.TextField(max_length=500, null=False)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
