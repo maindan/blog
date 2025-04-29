@@ -15,6 +15,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'account.User'
+
+LOGIN_URL = '/'
+
 
 # Application definition
 
@@ -29,6 +33,7 @@ INSTALLED_APPS = [
     'blog',
     'rest_framework',
     'rest_framework_simplejwt',
+    'account',
 ]
 
 MIDDLEWARE = [
