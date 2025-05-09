@@ -5,5 +5,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
-    path('', include('blog.urls'))
+    path('', include('blog.urls')),
+    path('', include('account.urls')),
 ]
