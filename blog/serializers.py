@@ -1,16 +1,23 @@
 from rest_framework import serializers
 from blog.models import Post, Tag, Comment
 
-class PostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Post
-        fields = '__all__'
-
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ['id', 'name']
+class PostSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=True, read_only=True)
+    tag_ids = serializers.PrimaryKeyRelatedField(
+        many=True, queryset=Tag.objects.all(), write_only=True, source='tags'
+    )
 
+    class Meta:
+        model = Post
+        fields = [
+            'id', 'title', 'subtitle', 'content',
+            'created_at', 'updated_at', 'created_by',
+            'tags', 'tag_ids'
+        ]
 class CommentSerializer(serializers.ModelSerializer):
     created_by = serializers.StringRelatedField()
 
