@@ -10,6 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
     tag_ids = serializers.PrimaryKeyRelatedField(
         many=True, queryset=Tag.objects.all(), write_only=True, source='tags'
     )
+    created_by = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -18,6 +19,9 @@ class PostSerializer(serializers.ModelSerializer):
             'created_at', 'updated_at', 'created_by',
             'tags', 'tag_ids'
         ]
+
+    def get_created_by(self, obj):
+        return obj.created_by.username
 class CommentSerializer(serializers.ModelSerializer):
     created_by = serializers.StringRelatedField()
 
