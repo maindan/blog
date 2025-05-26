@@ -8,11 +8,11 @@ from rest_framework import permissions
 
 schema_view = get_schema_view( 
    openapi.Info( 
-      title= "Título da sua API" , 
+      title= "Devlog" , 
       default_version= 'v1' , 
-      description= "Descrição do teste" , 
+      description= "Api do blog Devlog" , 
       terms_of_service= "https://www.google.com/policies/terms/" , 
-      contact=openapi.Contact(email= "contact@yourapi.local" ), 
+      contact=openapi.Contact(email= "maindan@gmail.com" ), 
       license=openapi.License(name= "Licença BSD" ), 
    ), 
    public= True , 
